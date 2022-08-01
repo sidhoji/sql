@@ -1,0 +1,145 @@
+-- -- create a table
+-- CREATE TABLE students (
+--   id INTEGER PRIMARY KEY,
+--   name TEXT NOT NULL,
+--   gender TEXT NOT NULL
+-- );
+-- -- insert some values
+-- INSERT INTO students VALUES (1, 'Ryan', 'M');
+-- INSERT INTO students VALUES (2, 'Joanna', 'F');
+-- -- fetch some values
+-- SELECT * FROM students WHERE gender = 'F';
+
+-- CREATE database MYdb;
+-- CREATE TABLE students (
+-- id INTEGER PRIMARY KEY,
+-- name varchar(20) NOT NULL,
+-- gender char(1) not NULL,
+-- marks INTEGER not NULL);
+-- INSERT INTO students VALUES(1,'sid','M',100);
+-- INSERT INTO students VALUES(2,'yash','O',0);
+-- INSERT INTO students VALUES(3,'mayur','M',1);
+-- SELECT * FROM students;
+-- SELECT name,marks from students;
+-- SELECT id,name + ','+ gender from students;
+-- SELECT id,name + ',' + gender as BoyOrGirl from students;
+-- alter table students
+-- add lastname varchar(20);
+-- SELECT * from students;
+-- update students set lastname = 'abc' where id=2;
+-- SELECT * from students;
+-- select id,name + ', ' + lastname as fullname from students;
+-- select * from students order by name desc,id;
+-- alter table students
+-- add class int;
+-- update students set class = 3 where id in (1,4,5);
+-- update students set class = 8 where id in (2,6);
+-- update students set class = 9 where id=3;
+-- select * from students;
+-- select class,avg(marks) , count(*) from students group by class;
+-- select count(*) from students;
+-- select class,avg(marks),count (*) from students group by class having class =3;
+-- select count (*) from students;
+-- -- wild card 
+-- select * from students where name like '%d';
+-- select * from students where name like 'y%';
+
+
+
+-- create table supplier(
+-- supplierid int PRIMARY key ,
+-- suppliername varchar(20));
+-- create table orders(
+-- orderid int PRIMARY key ,
+-- supplierid int ,
+-- orderdate date);
+-- insert into supplier values (100,'sid');
+-- insert into supplier values(101,'yash');
+-- insert into supplier values(104,'mayur');
+-- insert into orders values(1000,100,'1/08/2022');
+-- insert into orders values (1001,101,'2/08/2022');
+-- insert into orders values (1002,103,'2/08/2022');
+-- insert into orders values (1005,108,'4/08/2022');
+-- select* from orders;
+-- select * from supplier;
+-- -- inner join 
+-- select supplier.supplierid,supplier.suppliername,orders.orderdate from supplier inner join orders on supplier.supplierid = orders.supplierid;
+
+-- -- left outer join 
+-- select supplier.supplierid,supplier.suppliername,orders.orderdate from supplier left join orders on supplier.supplierid = orders.supplierid;
+
+-- -- right outer join 
+-- select supplier.supplierid,supplier.suppliername,orders.orderdate from supplier right join orders on supplier.supplierid = orders.supplierid;
+
+-- -- full join 
+-- select supplier.supplierid,supplier.suppliername,orders.orderdate from supplier full outer  join orders on supplier.supplierid = orders.supplierid;
+
+-- delete a table 
+
+
+-- SUB QUERY 
+
+create table employee (
+empid INTEGER PRIMARY key ,
+empname varchar(20),
+age int ,
+gender char(1),
+doj date,
+city varchar(20),
+salary decimal,
+dept varchar(20));
+insert into employee values(1,'sid',21,'M','18/07/2022','pune',25,'IT');
+insert into employee values(2,'yash',22,'M','18/07/2022','bang',3,'sales');
+insert into employee values(3,'mayur',21,'M','18/07/2022','pune',2.5,'IT');
+insert into employee values(4,'tanvi',22,'F','18/07/2022','delhi',7.5,'security');
+insert into employee values(5,'utkarsh',18,'M','18/07/2022','paris',5,'r&d');
+select * from employee;
+
+-- display department with maximum salary 
+
+-- select dept from employee
+-- where salary = (select max(salary) from employee);
+
+-- dispaly empname with maximum salary in dept 
+-- select employee.dept from employee
+-- where salary = (select max (salary) from employee);
+
+-- display name and dept of all employee who have salary less than avg salary of entire table
+
+-- select empname , dept, salary from employee where salary<(select avg(salary) from employee); \
+
+-- sub query using insert 
+-- insert statement uses the data returned 
+
+create table employee1(
+empid int,
+empname varchar(20),
+salary decimal);
+
+insert into employee1 select empid,empname,salary from employee where empid in (select empid from employee where salary>3);
+select * from employee1;
+
+-- sub query using update 
+-- either single or multiple  columns in a table can be updated when using a sub query 
+-- double the salary of employee whose age>21
+select * from employee;
+update employee set salary= salary*2 where age in (select age from employee where age >21);
+select * from employee;
+
+-- sub query with delete 
+-- delete employee where age is <20
+delete from employee where age <20;
+select * from employee;
+
+-- stored procedure
+
+create table product 
+(productid INTEGER PRIMARY key  , productname varchar(40));
+
+create table productdescrip
+(productid INTEGER PRIMARY key ,proddesc varchar(40));
+
+insert into product values (680,'car'),(69,'shoes');
+insert into productdescrip values (680,'audi r8 car with red colour'),(69,'nike black sneakers');
+
+-- create a simple stored procedure that joins two tables 
