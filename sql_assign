@@ -79,3 +79,85 @@ serialno int
 );
 alter table customer 
 add mobilenum int;
+
+insert into customer1 values (1,'sid',26000.50,100000,99);
+insert into customer1 values (2,'bob',22000.50,200000,919);
+insert into customer1 values (3,'TINA ADAMS',21324.45,50000,3);
+insert into customer1 values (4,'abc',28000.50,300000,989);
+delete from customer1 where cusname = 'bob';
+select cusname,cusid,balance order by cusname;
+select * from customer where creditlimit > 25000 ;
+describe customer1;
+
+--question no 1: 
+
+create table CVOTER(
+vno int,
+vname varchar(20),
+age int,
+address varchar(20),
+phone double);
+insert into CVOTER values(1,'sid',21,'pune',9160845547);
+insert into CVOTER values(2,'sido',22,'kop',9110845547);
+
+--question no 4 
+create table newstudent(
+admno int ,
+name varchar(30),
+stream varchar(20),
+optional varchar(20),
+average int );
+
+insert into newstudent values(1001,'shristi','science','cs',90);
+insert into newstudent values(1002,'ashi','humanities',null,80);
+insert into newstudent values(1003,'aditya','commerce','ip',null);
+insert into newstudent values(1004,'ritu raj','science',null,65);
+insert into newstudent values(1005,'sonali','commerce','maths',60);
+insert into newstudent values(1006,'saumya','science','ip',65);
+insert into newstudent values(1007,'ashutosh','science','ip',null);
+insert into newstudent values(1008,'prashant','science','pe',65);
+insert into newstudent values(1009,'aman','commerce','ip',95);
+insert into newstudent values(1010,'rishabh','commerce','ent',70);
+
+select * from newstudent where optional = 'pe' ;
+select name,stream,optional from newstudent where name= 's%';
+select name from newstudent where average<80;
+select name from newstudent where average between 80 and 90;
+select name from newstudent where stream = 'humanities' or 'commerce' ;
+select name,stream,average from newstudent where stream='commerce' and average<80;
+select * from newstudent where name!= 'aditya' and 'prashant';
+update newstudent set average = 70 where average=null;
+
+select stream from newstudent where name not name like '%tosh';
+select name from newstudent where optional IN ('maths','ent');
+
+--question no last
+
+create table furniture(
+itemname varchar(25),
+type varchar(25),
+dateofstock date,
+price int,
+discount int );
+
+insert into furniture values('white lotus', 'double bed', 2002/02/23,3000,25);
+insert into furniture values('pink feathers','baby cot',2002/01/29,7000,20);
+insert into furniture values('dolphin','baby cot', 2002/02/19,9500,20);
+insert into furniture values('decent','baby cot',2002/02/01,25000,30);
+insert into furniture values('comfort zone','office table',2002/02/12,25000,30);
+insert into furniture values('donald','baby cot',2002/02/24,6500,15);
+insert into furniture values('royal finish','office table',2002/02/20,18000,30);
+insert into furniture values('royal tiger','sofa',2002/02/22,31000,30);
+
+select * from furniture where type = 'baby cot';
+select itemname from furniture where price>15000;
+select itemname,type from furniture where dateofstock < 2022/02/01 order by itemname desc;
+select * from furniture where itemname = '%t';
+
+
+
+
+
+
+
+
