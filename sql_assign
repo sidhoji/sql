@@ -71,4 +71,9 @@ select studentname from student order by dob ;
 
 --Question no 9 
 create customer1 (
-cusid int 
+cusid int not null primary key,
+cusname varchar(25),
+balance decimal(5,2) not null,
+creditlimit int ,
+serialno int
+);
