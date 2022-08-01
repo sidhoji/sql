@@ -77,3 +77,5 @@ balance decimal(5,2) not null,
 creditlimit int ,
 serialno int
 );
+alter table customer 
+add mobilenum int;
