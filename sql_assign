@@ -1,0 +1,74 @@
+--Question no 3 
+
+
+create table customer(
+custid int primary key,
+custname varchar(20),
+custadd varchar(20),
+custadd1 varchar(30),
+custpincode int ,
+custphoneno char(10));
+
+create  table employee(
+empid int primary key ,
+empname varchar(20),
+empsalary decimal);
+
+insert into employee values(1,'sid',50000.00);
+insert into employee values(2,'utkarsh',60000.00);
+insert into employee values(3,'jolly',70000.00);
+
+select * from employee;
+
+alter table customer 
+add custemail varchar(30);
+
+alter table customer 
+alter column  custemail varchar(40);
+
+insert into customer values(1,'sid','pune','hinjewadi',411057,'9168020342','sawant@gmail.com');
+insert into customer values(2,'tanvi','pune','ravivar peth',411011,'9168020343','tanvi@gmail.com');
+insert into customer values(3,'mayur','pune','dhayri',411041,'9168020347','mayur@gmail.com');
+
+select * from customer;
+
+alter table customer drop column custemail;
+
+select * from customer;
+
+ delete  customer;
+
+ select * from customer;
+
+ select * from employee;
+ update employee set empsalary=empsalary+empsalary*0.10;
+ select * from employee;
+
+
+
+ --question no 4
+
+create table student(
+rollno int ,
+studentname varchar(20),
+class varchar(20),
+dob date,
+sex char(1),
+grade char(1));
+
+insert into student values(1,'SUMIT' ,'XI' ,'6-6-1995','M','A');
+insert into student values(2,'SONAL' ,'XI' ,'8-9-1994','F','A');
+insert into student values(3,'AMIT' ,'XII' ,'5-11-1995','M','B');
+insert into student values(4,'RAHUL' ,'XII' ,'8-9-1994','M','C');
+insert into student values(5,'KANCHAN' ,'XII' ,'2-3-1994','F','A');
+insert into student values(6,'MAMTA' ,'XI' ,'4-12-1995','F','C');
+insert into student values(7,'NISHANT' ,'XI' ,'10-4-1995','M','B'); 
+
+select * from student where class=8;
+select * from student where sex='F' and grade ='A';
+select grade  from student where studentname= '%N';
+select studentname from student order by dob ;
+
+--Question no 9 
+create customer1 (
+cusid int 
